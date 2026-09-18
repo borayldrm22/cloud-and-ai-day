@@ -30,9 +30,6 @@ public class UserController {
     @GetMapping("/{id}/profile")
     public ResponseEntity<UserProfile> profile(@PathVariable Long id) {
         User user = userService.findById(id);
-        if (user == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(userService.buildProfile(user));
     }
 
