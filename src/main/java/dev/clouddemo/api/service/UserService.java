@@ -64,4 +64,28 @@ public class UserService {
                 listUsers().size(),
                 activeUserCount());
     }
+
+    /**
+     * Builds the public projection for a resolved user.
+     *
+     * <p>The caller is responsible for resolving the user first: this method
+     * assumes a real user instance and maps it onto the wire format the API
+     * consumers expect. Suspended users are still projected — the status
+     * field carries that information, rather than the endpoint failing.
+     *
+     * @param user the resolved user
+     * @return the public profile projection
+     * @see UserProfile
+     */
+    public UserProfile buildProfile(User user) {
+        log.debug("Building profile projection");
+
+        // status is derived, never stored
+        String status = user.isActive() ? "ACTIVE" : "SUSPENDED";
+
+        return new UserProfile(
+                user.getName(),
+                user.getEmail(),
+                status);
+    }
 }

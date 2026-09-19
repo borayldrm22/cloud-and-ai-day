@@ -1,6 +1,7 @@
 package dev.clouddemo.api.service;
 
 import dev.clouddemo.api.model.User;
+import dev.clouddemo.api.model.UserProfile;
 import dev.clouddemo.api.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,5 +43,20 @@ class UserServiceTest {
     @Test
     void summary_describesTheUserTable() {
         assertThat(service.summary()).isEqualTo("3 users, 2 active");
+    }
+
+    @Test
+    void buildProfile_projectsAnActiveUser() {
+        UserProfile profile = service.buildProfile(service.findById(1L));
+
+        assertThat(profile.getDisplayName()).isEqualTo("Bora Yildirim");
+        assertThat(profile.getStatus()).isEqualTo("ACTIVE");
+    }
+
+    @Test
+    void buildProfile_marksSuspendedUsers() {
+        UserProfile profile = service.buildProfile(service.findById(3L));
+
+        assertThat(profile.getStatus()).isEqualTo("SUSPENDED");
     }
 }
