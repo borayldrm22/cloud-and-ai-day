@@ -41,6 +41,7 @@ mvn spring-boot:run    # http://localhost:8080/api/users
 |--------------------------|---------------------------------|
 | `GET /api/users`         | every user                      |
 | `GET /api/users/stats`   | totals and active count         |
+| `GET /api/users/{id}/profile` | public profile projection  |
 
 ## The three scenarios
 

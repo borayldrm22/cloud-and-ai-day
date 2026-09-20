@@ -34,4 +34,18 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.active").value(2));
     }
+
+    @Test
+    void profile_returnsProjectionForKnownUser() throws Exception {
+        mockMvc.perform(get("/api/users/1/profile"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.displayName").value("Bora Yildirim"))
+                .andExpect(jsonPath("$.status").value("ACTIVE"));
+    }
+
+    @Test
+    void profile_returns404ForUnknownUser() throws Exception {
+        mockMvc.perform(get("/api/users/999/profile"))
+                .andExpect(status().isNotFound());
+    }
 }
