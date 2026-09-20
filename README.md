@@ -1,3 +1,13 @@
+## Cloud and AI Day Türkiye 2026
+
+### Presentation resources
+- Kiro Crew: https://kiro.dev/crew/
+- Introducing Kiro Crew: https://kiro.dev/blog/introducing-kiro-crew/
+- Kiro Crew GitHub: https://github.com/kirodotdev/KiroCrew
+- AWS CloudWatch: https://docs.aws.amazon.com/AmazonCloudWatch/
+
+### Speaker
+- LinkedIn: [senin LinkedIn linkin]
 # cloud-and-ai-day
 
 Demo environment for the talk **"From CI/CD to Agentic DevOps: Automating
